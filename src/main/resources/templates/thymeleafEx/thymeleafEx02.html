@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>output data</h1>
+<div>
+    name : <span th:text="${itemDto.itemName}"></span>
+</div>
+
+<div>
+    detail : <span th:text="${itemDto.itemDetail}"></span>
+</div>
+<div>
+    reg date : <span th:text="${itemDto.regTime}"></span>
+</div>
+<div>
+    price : <span th:text="${itemDto.price}"></span>
+</div>
+</body>
+</html>

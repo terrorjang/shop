@@ -1,5 +1,6 @@
 package com.shop.repository;
 
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.shop.constant.ItemSellStatus;
 import com.shop.entity.Item;
 import org.junit.jupiter.api.DisplayName;
@@ -8,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -16,6 +19,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 @TestPropertySource(locations = "classpath:application-test.properties")
 class ItemRepositoryTest {
+
+    @PersistenceContext
+    EntityManager em;
     @Autowired
     ItemRepository itemRepository;
 
@@ -69,6 +75,13 @@ class ItemRepositoryTest {
         // then
         assertThat(itemList.size()).isEqualTo(1);
 
+
+    }
+
+    @Test
+    public void queryDslTest() {
+        createSampleItems();
+        JPAQueryFactory queryFactory = new JPAQueryFactory(em);
 
     }
 
